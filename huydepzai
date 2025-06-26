@@ -1,0 +1,82 @@
+-- HuyDepZai Hub script by ChatGPT
+
+local MyScripts = {
+	{ PlacesIds = {2753915549, 4442272183, 7449423635}, Path = "BloxFruits.luau" },
+	{ PlacesIds = {10260193230},                         Path = "MemeSea.luau"   }
+}
+
+local fetch, url = {}, {}
+url.Owner       = "https://raw.githubusercontent.com/tlredz/"
+url.Repository  = `{ url.Owner }Scripts/refs/heads/main/`
+url.Translator  = `{ url.Repository }Translator/`
+url.Utils       = `{ url.Repository }Utils/`
+
+do
+	local _ENV = (getgenv or getrenv or getfenv)()
+	if _ENV.huy_gui_error then _ENV.huy_gui_error:Destroy() end
+
+	local identifyexecutor = identifyexecutor or function() return "Unknown" end
+
+	local function popup(msg)
+		_ENV.loadedFarm = nil
+		_ENV.OnFarm     = false
+
+		local gui   = Instance.new("ScreenGui")
+		gui.Name    = "HuyDepZai Hub"
+		gui.ResetOnSpawn = false
+
+		local frame = Instance.new("Frame", gui)
+		frame.Size  = UDim2.new(0.45,0, 0.25,0)
+		frame.Position = UDim2.new(0.275,0, 0.35,0)
+		frame.BackgroundColor3 = Color3.fromRGB(0,170,255)
+		frame.BorderSizePixel  = 0
+		frame.BackgroundTransparency = 0.1
+		frame.ClipsDescendants = true
+
+		local img  = Instance.new("ImageLabel", frame)
+		img.Size   = UDim2.new(0.28,0, 0.8,0)
+		img.Position = UDim2.new(0.03,0, 0.1,0)
+		img.BackgroundTransparency = 1
+		img.Image  = "rbxassetid://12345678901" -- Thay bằng asset ID icon của bạn
+
+		local txt  = Instance.new("TextLabel", frame)
+		txt.Size   = UDim2.new(0.65,0, 1,0)
+		txt.Position = UDim2.new(0.33,0, 0,0)
+		txt.BackgroundTransparency = 1
+		txt.TextColor3 = Color3.new(1,1,1)
+		txt.TextScaled = true
+		txt.Font = Enum.Font.SourceSansBold
+		txt.Text = string.gsub(msg, url.Owner, "")
+
+		gui.Parent       = game:GetService("CoreGui")
+		_ENV.huy_gui_error = gui
+		error(msg, 2)
+	end
+
+	local function fix(u)
+		for k,v in url do u = u:gsub("{"..k.."}", v) end
+		return u
+	end
+	function fetch.get(u)
+		local ok, res = pcall(function() return game:HttpGet(fix(u)) end)
+		if ok then return res else popup(`[1][{identifyexecutor()}] GET fail: {u}\n>>{res}<<`) end
+	end
+	function fetch.load(u, extra)
+		local src = fetch.get(u)..(extra or "")
+		local f, e = loadstring(src)
+		if type(f)~="function" then
+			popup(`[2][{identifyexecutor()}] Syntax: {u}\n>>{e}<<`)
+		else return f end
+	end
+end
+
+local function isPlace(d)
+	return (d.PlacesIds and table.find(d.PlacesIds, game.PlaceId))
+	       or (d.GameId and d.GameId == game.GameId)
+end
+
+for _,d in MyScripts do
+	if isPlace(d) then
+		return fetch.load("{Repository}Games/"..d.Path)(fetch, ...)
+	end
+end
